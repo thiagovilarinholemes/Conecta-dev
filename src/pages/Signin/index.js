@@ -11,6 +11,9 @@ import Link from '@material-ui/core/Link';
 import { Navigate, useNavigate } from 'react-router-dom';
 // import axios from '../../utils/axios';
 import authService from '../../services/authService'; 
+import { useSelector, useDispatch } from 'react-redux';
+
+import  signIn  from '../../actions/accountActions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -82,9 +85,16 @@ function Signin() {
     const [password, setPassword] = useState('')
     const [errorMessage, setMessage] = useState()
 
+    const dispatch = useDispatch();
+    const account = useSelector(state => state);
+
+
     async function handleSignIn(){
         try {
-            await authService.signIn(email, password)  // axios.post('/api/home/login', {email: 'lemes@lemes', password:'admins'});
+
+            await dispatch(signIn(email, password));
+
+            // await authService.signIn(email, password)  // axios.post('/api/home/login', {email: 'lemes@lemes', password:'admins'});
             navigate('/')
 
         } catch (error) {
