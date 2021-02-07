@@ -10,10 +10,10 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import { Navigate, useNavigate } from 'react-router-dom';
 // import axios from '../../utils/axios';
-import authService from '../../services/authService'; 
+import authService from '../../services/authService';
 import { useSelector, useDispatch } from 'react-redux';
 
-import  signIn  from '../../actions/accountActions'
+import { signIn } from '../../actions/accountActions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1)
     },
     form: {
-        margin: theme.spacing(2,4)
+        margin: theme.spacing(2, 4)
     }
     // left: {
     //     background: 'red',
@@ -64,18 +64,18 @@ const useStyles = makeStyles((theme) => ({
 
 function Copyright() {
     return (
-      <Typography variant="body2" align="center">
-        {'Copyright © '}
-        <a
-          color="inherit"
-          href="https://www.youtube.com/channel/UCVE9-HO_GzLtDK4IGKVSYXA"
-        >
-          Thiago Lemes
+        <Typography variant="body2" align="center">
+            {'Copyright © '}
+            <a
+                color="inherit"
+                href="https://www.youtube.com/channel/UCVE9-HO_GzLtDK4IGKVSYXA"
+            >
+                Thiago Lemes
         </a>{' '}
-        {new Date().getFullYear()}
-      </Typography>
+            {new Date().getFullYear()}
+        </Typography>
     );
-  }
+}
 
 function Signin() {
 
@@ -89,20 +89,14 @@ function Signin() {
     const account = useSelector(state => state);
 
 
-    async function handleSignIn(){
-        try {
+    async function handleSignIn() {
+        await dispatch(signIn(email, password));
 
-            await dispatch(signIn(email, password));
-
-            // await authService.signIn(email, password)  // axios.post('/api/home/login', {email: 'lemes@lemes', password:'admins'});
-            navigate('/')
-
-        } catch (error) {
-            setMessage(error.response.data.message)
-        }
+        // await authService.signIn(email, password)  // axios.post('/api/home/login', {email: 'lemes@lemes', password:'admins'});
+        navigate('/')
     }
 
-    
+
 
     return (
 
@@ -141,10 +135,10 @@ function Signin() {
                             autoFocus
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
-                            // error={Boolean(errors.email)}
-                            // value={values.email}
-                            // onChange={handleChange}
-                            // helperText={errors.email}
+                        // error={Boolean(errors.email)}
+                        // value={values.email}
+                        // onChange={handleChange}
+                        // helperText={errors.email}
                         />
                         <TextField
                             variant="outlined"
@@ -158,31 +152,31 @@ function Signin() {
                             autoComplete="current-password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
-                            // value={values.password}
-                            // onChange={handleChange}
-                            // error={Boolean(errors.password)}
-                            // helperText={errors.password}
+                        // value={values.password}
+                        // onChange={handleChange}
+                        // error={Boolean(errors.password)}
+                        // helperText={errors.password}
                         />
-                        <Button fullWidth variant='contained' color='primary' 
+                        <Button fullWidth variant='contained' color='primary'
                             className={classes.button} onClick={handleSignIn}>
-                        Entrar
+                            Entrar
                     </Button>
-                    {
-                        errorMessage &&
-                        <FormHelperText error>
-                            {errorMessage}
-                        </FormHelperText>
-                    }
-                    <Grid container>
+                        {
+                            errorMessage &&
+                            <FormHelperText error>
+                                {errorMessage}
+                            </FormHelperText>
+                        }
+                        <Grid container>
 
-                        <Grid item>
-                            <Link>Esqueceu sua senha?</Link>
-                        </Grid>
+                            <Grid item>
+                                <Link>Esqueceu sua senha?</Link>
+                            </Grid>
 
-                        <Grid item>
-                            <Link>Não tem conta? Registre-se</Link>
+                            <Grid item>
+                                <Link>Não tem conta? Registre-se</Link>
+                            </Grid>
                         </Grid>
-                    </Grid>
                     </form>
                     <Copyright />
                 </Box>

@@ -1,10 +1,14 @@
 import mock from '../utils/mock';
 
-// mock.onPost('/api/home/login').reply(200, {
-//     'id': 1,
-//     'username': 'lemes',
-//     'email': 'lemes@lemes'
-// });
+mock.onPost('/api/home/me').reply(200, {
+    user: {
+        'id': 1,
+        'username': 'lemes',
+        'email': 'lemes@lemes',
+        'avatar': "/images/avatars/avatar.jpg"
+    }
+});
+
 
 mock.onPost('/api/home/login').reply((config) => {
     const { email, password } = JSON.parse(config.data);
@@ -21,5 +25,5 @@ mock.onPost('/api/home/login').reply((config) => {
         avatar: "/images/avatars/avatar.jpg"
     }
 
-    return [200, {user}]
+    return [200, { user }]
 })
