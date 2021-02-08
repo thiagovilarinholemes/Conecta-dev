@@ -58,7 +58,6 @@ function Notifications() {
         dispatch(getNotifications());
     }, [dispatch]);
 
-    console.log(notifications);
 
     return (
         isAuthenticated && (
@@ -92,7 +91,7 @@ function Notifications() {
                             notifications.map((notification) => {
                                 const Icon = iconsMap[notification.type]
                                 return (
-                                <ListItem>
+                                <ListItem >
                                     <ListItemAvatar>
                                         <Avatar className={classes.icon}>
                                             <SvgIcon> 

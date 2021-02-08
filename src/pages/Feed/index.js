@@ -1,8 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 
-import PostCard from '../../../components/PostCard';
-
+import PostCard from '../../components/PostCard';
+import NavBar from './Navbar';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const posts = [
-    {   id: 1, 
+    {
+        id: 1,
         author: {
             id: 1,
             name: 'Thiago',
@@ -24,7 +27,8 @@ const posts = [
         hashtags: 'java, php, donet',
         image: '/images/posts/post9.jpeg'
     },
-    {   id: 2, 
+    {
+        id: 2,
         author: {
             id: 1,
             name: 'Thiago',
@@ -37,7 +41,7 @@ const posts = [
         hashtags: 'java, php, donet',
         image: '/images/posts/post2.png'
     },
-    
+
 ]
 
 
@@ -46,13 +50,16 @@ function Feed() {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            {
-                posts.map(post => (
-                    <PostCard key={post.id} post={ post } />
-                ))
-            }
-        </div>
+        <Container maxWidth="lg">
+            <Box display="flex">
+                <NavBar />
+                <div className={classes.root}>
+                    {posts.map((post) => (
+                        <PostCard key={post.id} post={post} />
+                    ))}
+                </div>
+            </Box>
+        </Container>
     )
 }
 
