@@ -38,15 +38,37 @@ class AuthService{
             });
         });
       };
+    
+    // Seta o token
+    setToken = (token) => {
+        localStorage.setItem("accessToken", token); 
+    }
 
-    // Armazena no navegador
+    // Busca o token
+    getToken = () => localStorage.getItem("accessToken");
+
+    // Remove token
+    removeToken = () => localStorage.removeItem("accessToken");
+    
+    // Verifica se está autenticado
+    isAuthenticated = () => !!this.getToken();
+
+    // Faz signout
+    signOut = () => {
+      this.removeToken();
+    }
+}
+
+const authService = new AuthService();
+
+export default authService;
+
+/* Anotações */
+
+// Armazena no navegador
     // setUser = (user) => {
     //     localStorage.setItem("user", JSON.stringify(user)); // JSON.stringify(user) passa o objeto para JSON
     // }
-
-    setToken = (token) => {
-        localStorage.setItem("accessToken", token); // JSON.stringify(user) passa o objeto para JSON
-    }
 
     // getUser = () => {
     //     const user = localStorage.getItem("user");
@@ -60,12 +82,3 @@ class AuthService{
     //     }
     //     return user;
     // }
-
-    getToken = () => localStorage.getItem("accessToken");
-        
-    isAuthenticated = () => !!this.getToken();
-}
-
-const authService = new AuthService();
-
-export default authService;
