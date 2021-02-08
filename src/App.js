@@ -8,7 +8,6 @@ import GuestRoute from './routes/GuestRoute';
 import Home from './pages/Home';
 import theme from './theme';
 import SignIn from './pages/Signin';
-import NewPost from './pages/Post/New'
 
 import './mock'
 

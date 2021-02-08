@@ -77,7 +77,7 @@ function Copyright() {
     );
 }
 
-function Signin() {
+function SignIn() {
 
     const navigate = useNavigate();
     const classes = useStyles();
@@ -93,7 +93,7 @@ function Signin() {
         await dispatch(signIn(email, password));
 
         // await authService.signIn(email, password)  // axios.post('/api/home/login', {email: 'lemes@lemes', password:'admins'});
-        navigate('/')
+        navigate('/feed')
     }
 
 
@@ -160,7 +160,7 @@ function Signin() {
                         <Button fullWidth variant='contained' color='primary'
                             className={classes.button} onClick={handleSignIn}>
                             Entrar
-                    </Button>
+                        </Button>
                         {
                             errorMessage &&
                             <FormHelperText error>
@@ -214,4 +214,4 @@ function Signin() {
     );
 }
 
-export default Signin;
+export default SignIn;

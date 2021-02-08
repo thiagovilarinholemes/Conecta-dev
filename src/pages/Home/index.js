@@ -6,6 +6,7 @@ import Header from './components/Header';
 import NewPost from '../Post/New';
 import Feed from '../Feed/';
 
+
 const useStyles = makeStyles({
     root: {
         display: 'flex',
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
     },
 
     main: {
-        height: '100vh',
+        height: 'calc(100vh - 64px)',
         padding: 24
     },
     toolbar: {

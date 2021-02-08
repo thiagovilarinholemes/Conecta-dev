@@ -28,7 +28,11 @@ function Account() {
     const handleSignOut = () => {
         handleClose();
         dispatch(signOut());
-        navigate('/')
+        navigate('/feed')
+    }
+
+    const handleSignIn = () => {
+        navigate('/sign-in')
     }
 
     return (<React.Fragment>
@@ -65,7 +69,7 @@ function Account() {
                     getContentAnchorEl={null}
                 >
                     <MenuItem>Registrar Grátis</MenuItem>
-                    <MenuItem>Entrar</MenuItem>
+                    <MenuItem onClick={handleSignIn}>Entrar</MenuItem>
                 </Menu>
         }
     </React.Fragment>)

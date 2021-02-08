@@ -4,6 +4,7 @@ mock.onPost('/api/home/me').reply(200, {
     user: {
         'id': 1,
         'username': 'lemes',
+        'name': "Thiago Lemes",
         'email': 'lemes@lemes',
         'avatar': "/images/avatars/avatar.jpg"
     }
@@ -21,6 +22,7 @@ mock.onPost('/api/home/login').reply((config) => {
     const user = {
         id: 1,
         username: "lemes",
+        name: "Thiago Lemes",
         email: "lemes@lemes",
         avatar: "/images/avatars/avatar.jpg"
     }

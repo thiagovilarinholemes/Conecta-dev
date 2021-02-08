@@ -31,7 +31,7 @@ const signIn = (email, password) => {
 
   const signOut = () => {
     return async (dispatch) => {
-      await authService.signInWithToken();
+      await authService.signOut();
       dispatch({
         type: SIGNOUT,
       });
