@@ -41,13 +41,6 @@ function NewPost() {
                     <PostPreview />   
                 </Box>
             </Box>
-            {/* Appbar Bottom */}
-            <AppBar position="fixed" color="inherit" className={classes.appBar}>
-                <Toolbar>
-                    <Button>Salvar rascunho</Button>
-                    <Button color='secondary' variant='outlined'>Publicar</Button>
-                </Toolbar>
-            </AppBar>
         </PostProvider>
     )
 }
